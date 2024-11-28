@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SkillCard from "../components/SkillCard.astro";
+import Title from "../components/Title.astro";
+---
+
+<Layout title="Minimalist Dragon | Portfolio">
+	<header><Navbar /></header>
+		<main>
+			<section class="about">
+				<img src='dragon.png' alt='profile picture'/>
+				<article>
+					<p>Hi!, I'm Alejandro Londono</p>
+					<Title text='Software Developer'/>
+				</article>
+				<Button message='Latest Posts' icon='/external-link.svg' link='#'/>
+			</section>
+			<section class="skills">
+				<Title text='Skills & Technologies'/>
+				<section>
+					<SkillCard 
+						title='Frontend Development'
+						description='Developing websites with JavaScript, React, and Astro'
+						icon='/design.svg'
+					/>
+					<SkillCard 
+						title='Backend Development'
+						description=' Developing APIs with JavaScript and Python'
+						icon='/server.svg'
+					/>
+					<SkillCard 
+						title='Databases'
+						description='Databases like PostgreSQL and MongoDB.'
+						icon='/database.svg'
+					/>
+				</section>
+			</section>
+			<section class="work">
+				<Title text='My Work'/>
+				<section>
+					<ProjectCard 
+					title='My Project #1'
+					description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+					link='#'
+					/>
+					<ProjectCard 
+						title='My Project #2'
+						description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+						link='#'
+					/>
+					<ProjectCard 
+						title='My Project #3'
+						description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+						link='#'
+					/>
+				</section>
+				
+			</section>
+			<section class="contact">
+				<Title text='Tell me about your next project'/>
+				<Button message='Send Message' icon='/email.svg' link='mailto:example@example.com'/>
+			</section>
+		</main>
+		<Footer />
+</Layout>
+
+<style>
+	main {
+		margin: 50px auto 0 auto;
+		max-width: 1020px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 100px;
+	}
+
+	.about {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 40px;
+		width: 100%;
+		height: calc(100vh - 50px);
+		text-align: center;
+		border-bottom: 1px solid rgb(30, 30, 30, 0.3);
+		padding: 0 20px;
+	}
+
+	.about > img {
+		width: 150px;
+		border-radius: 9999px;
+		object-fit: cover;
+	}
+
+	.about > article {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.about > article > p {
+		color: #1e1e1e;
+		font-style: italic;
+	}
+
+	.skills {
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+		width: 100%;
+		align-items: center;
+		border-bottom: 1px solid rgba(30, 30, 30, 0.3);
+		padding: 0px 20px 100px 20px;
+	}
+
+	.skills > section {
+		display: flex;
+		gap: 40px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.work {
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+		width: 100%;
+		align-items: center;
+		border-bottom: 1px solid rgb(30, 30, 30, 0.3);
+		padding: 0px 20px 100px 20px;
+	}
+	
+	.work > section {
+		display: flex;
+		gap: 40px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.contact {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 50px;
+		width: 100%;
+		padding: 0px 20px 100px 20px;
+	}
+
+	@media screen and (max-width: 700px) {
+		main {
+			margin: 0 auto;
+		}
+
+		.about {
+			height: 80vh;
+		}
+
+		.about > img {
+			width: 100px;
+		}
+	}
+</style>
