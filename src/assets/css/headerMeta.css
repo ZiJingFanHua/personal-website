@@ -1,0 +1,17 @@
+.header-meta {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.meta-content .meta-title {
+  font-size: 18px;
+  line-height: 15px;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+.meta-content .meta-description {
+  font-size: 12px;
+  line-height: 26px;
+}

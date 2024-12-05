@@ -1,10 +1,37 @@
+---
+import Icon, { Props as IconProps } from "./Icon.astro";
+//外部链接
+type iconLink = {
+    label:string,
+    href:string
+    icon:IconProps['icon']
+}
+const iconLinks:iconLink[] = [
+    {
+    label: "Gitee",
+    href: "https://gitee.com/zijingfanhuha",
+    icon: "gitee-logo",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/ZiJingFanHua",
+    icon: "github-logo",
+  },
+]
+---
 <nav class="navbar">
-    <span>Alejandro Londono</span>
-    <ul>
-        <li><a href="#" target="_blank">Linkedin</a></li>
-        <li><a href="#" target="_blank">Github</a></li>
-        <li><a href="#" target="_blank">Dev.to</a></li>
-        <li class="contact-btn"><a href="mailto:example@example.com">Contact</a></li>
+    <span>ZiJing web</span>
+    <ul class="social-list">
+        {
+            iconLinks.map(({href,icon,label}) =>{
+                return (<li>
+                <a href={href} class="social">
+                <span class="sr-only">{label}</span>
+                <Icon icon={icon} size='30px'></Icon>   
+                </a>   
+            </li>)
+            })
+        }
     </ul>
 </nav>
 
@@ -33,7 +60,7 @@
         display: flex;
         align-items: center;
         list-style: none;
-        gap: 30px;
+        gap: 10px;
         font-size: 14px;
     }
 
@@ -57,6 +84,17 @@
 
     .navbar > ul > .contact-btn > a {
         color: #fff;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
     }
 
     @media screen and (max-width: 700px) {

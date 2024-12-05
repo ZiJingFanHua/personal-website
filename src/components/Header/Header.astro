@@ -1,0 +1,147 @@
+---
+import Icon, { Props as IconProps } from '../Icon.astro'
+import { SITE } from '../../consts'
+import Logo from '../Logo.astro'
+import { HeaderContent } from './HeaderContent'
+// import SearchButton from './SearchButton'
+//外部链接
+type iconLink = {
+    label: string
+    href: string
+    icon: IconProps['icon']
+}
+const iconLinks: iconLink[] = [
+    {
+        label: 'Gitee',
+        href: 'https://gitee.com/zijingfanhuha',
+        icon: 'gitee-logo',
+    },
+    {
+        label: 'GitHub',
+        href: 'https://github.com/ZiJingFanHua',
+        icon: 'github-logo',
+    },
+]
+---
+
+<nav class="navbar">
+    <div class="logo flex">
+        <a href="/">
+            <Logo size={32} />
+            <h1 class="title">{SITE.title ?? 'Documentation'}</h1>
+        </a>
+    </div>
+    <div class="center-content">
+        <HeaderContent client:only="react" />
+    </div>
+    <div class="search">
+     <!-- <SearchButton></SearchButton> -->
+    </div>
+    <ul class="social-list">
+        {
+            iconLinks.map(({ href, icon, label }) => {
+                return (
+                    <li>
+                        <a href={href} class="social">
+                            <span class="sr-only">{label}</span>
+                            <Icon icon={icon} size="26px" />
+                        </a>
+                    </li>
+                )
+            })
+        }
+    </ul>
+</nav>
+
+<style>
+    .navbar {
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: 333px auto 100px 283px;
+        width: calc(100%);
+        height: 50px;
+        border-bottom: 1px solid rgb(30, 30, 30, 0.3);
+        background-color: rgb(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px) saturate(200%);
+        padding: 0 20px;
+    }
+    .navbar > .logo {
+        justify-content: center;
+    }
+    .navbar > .logo a {
+        display: flex;
+        align-items: center;
+    }
+    .navbar > .logo .title {
+        font-size: 16px;
+        line-height: 50px;
+        margin-bottom: 0;
+    }
+  
+    .navbar .center-content {
+       display: flex;
+       position: relative;
+       height: 50px;
+    }
+    .navbar > ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .navbar > ul > li > a {
+        color: #1e1e1e;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .navbar > ul > li > a:hover {
+        color: orange;
+    }
+
+    .navbar > ul > .contact-btn {
+        background-color: #1e1e1e;
+        background: linear-gradient(160deg, rgb(59, 59, 59) 10%, rgba(30, 30, 30, 1) 100%);
+        padding: 5px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .navbar > ul > .contact-btn > a {
+        color: #fff;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    @media screen and (max-width: 700px) {
+        .navbar {
+            position: static;
+            flex-direction: column;
+            height: auto;
+            justify-content: center;
+            align-items: center;
+            width: calc(100% - 20px);
+            padding: 10px;
+        }
+
+        .navbar > ul {
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0;
+        }
+    }
+</style>

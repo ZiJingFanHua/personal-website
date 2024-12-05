@@ -3,66 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Button from "../components/Button.astro";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import SkillCard from "../components/SkillCard.astro";
 import Title from "../components/Title.astro";
+import { Provider } from '@/components/provider/Provider'
 ---
 
-<Layout title="Minimalist Dragon | Portfolio">
+<Layout title="zijing|web">
+	<Provider  pathName={Astro.url.pathname} client:only="react"/>
 	<header><Navbar /></header>
 		<main>
 			<section class="about">
-				<img src='dragon.png' alt='profile picture'/>
+				<img src='zijing.jpg' alt='zijing picture'/>
 				<article>
-					<p>Hi!, I'm Alejandro Londono</p>
-					<Title text='Software Developer'/>
+					<p>Hi!, I'm ZiJing</p>
+					<Title text='Welcome to my WEB'/>
 				</article>
-				<Button message='Latest Posts' icon='/external-link.svg' link='#'/>
-			</section>
-			<section class="skills">
-				<Title text='Skills & Technologies'/>
-				<section>
-					<SkillCard 
-						title='Frontend Development'
-						description='Developing websites with JavaScript, React, and Astro'
-						icon='/design.svg'
-					/>
-					<SkillCard 
-						title='Backend Development'
-						description=' Developing APIs with JavaScript and Python'
-						icon='/server.svg'
-					/>
-					<SkillCard 
-						title='Databases'
-						description='Databases like PostgreSQL and MongoDB.'
-						icon='/database.svg'
-					/>
-				</section>
-			</section>
-			<section class="work">
-				<Title text='My Work'/>
-				<section>
-					<ProjectCard 
-					title='My Project #1'
-					description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-					link='#'
-					/>
-					<ProjectCard 
-						title='My Project #2'
-						description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-						link='#'
-					/>
-					<ProjectCard 
-						title='My Project #3'
-						description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-						link='#'
-					/>
-				</section>
-				
-			</section>
-			<section class="contact">
-				<Title text='Tell me about your next project'/>
-				<Button message='Send Message' icon='/email.svg' link='mailto:example@example.com'/>
+				<Button message='GO' icon='/external-link.svg' link='docs/en/com-http-code'/>
 			</section>
 		</main>
 		<Footer />
