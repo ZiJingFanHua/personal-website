@@ -1,6 +1,7 @@
 ---
 title: "Astro快速搭建博客"
 description: "使用Astro快速搭建博客"
+date: 2022-05-04
 ---
 
 ## 引言--什么是Astro

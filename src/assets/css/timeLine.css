@@ -1,0 +1,36 @@
+.time-line {
+  position: relative;
+  text-align: left;
+  padding-top: 60px;
+  flex: auto;
+  min-width: 600px;
+}
+.time-line>.time-year {
+   position: absolute;
+   top: -6px;
+   left: -10px;
+   z-index: -1;
+   opacity: .12;
+}
+.time-line .hollow-text {
+  -webkit-text-stroke: 2px rgb(55,58,60);
+  color: transparent;
+  font-size: 86px;
+  font-weight: 700;
+
+}
+.time-line .article-list > li {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.time-line .article-list > li > a {
+  cursor: pointer;
+}
+
+.time-line .article-list > li > a:hover {
+  text-decoration: underline;
+}
+.time-line .article-list > li > span {
+  opacity: 0.3;
+}

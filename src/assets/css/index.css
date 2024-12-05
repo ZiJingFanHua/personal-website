@@ -28,6 +28,7 @@ ul > li {
 }
 
 body {
+  width: 100%;
   flex-direction: column;
   min-height: 100vh;
   font-family: var(--font-body);
@@ -425,4 +426,7 @@ h2.heading {
 
 .flex {
   display: flex;
+}
+.layout {
+  padding-top:50px;
 }

@@ -4,12 +4,14 @@ import Button from "../components/Button.astro";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import Title from "../components/Title.astro";
+import Header from "../components/Header/Header.astro";
 import { Provider } from '@/components/provider/Provider'
 ---
 
 <Layout title="zijing|web">
 	<Provider  pathName={Astro.url.pathname} client:only="react"/>
-	<header><Navbar /></header>
+	<!-- <header><Navbar /></header> -->
+	<Header></Header>
 		<main>
 			<section class="about">
 				<img src='zijing.jpg' alt='zijing picture'/>
@@ -17,7 +19,7 @@ import { Provider } from '@/components/provider/Provider'
 					<p>Hi!, I'm ZiJing</p>
 					<Title text='Welcome to my WEB'/>
 				</article>
-				<Button message='GO' icon='/external-link.svg' link='docs/en/com-http-code'/>
+				<Button message='GO' icon='/external-link.svg' link='/archives'/>
 			</section>
 		</main>
 		<Footer />

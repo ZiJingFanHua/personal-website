@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getShortDate } from '../utils/date'
+import '../assets/css/timeLine.css'
+interface Props {
+  docs: CollectionEntry<'docs'>[]
+}
+
+const { docs } = Astro.props
+
+const groupedPosts = docs.reduce<
+  {
+    year: number
+    posts: CollectionEntry<'docs'>[]
+  }[]
+>((acc, cur) => {
+  const year = cur.data.date.getFullYear()
+  const lastYearGroup = acc[acc.length - 1]
+  if (lastYearGroup && lastYearGroup.year === year) {
+    lastYearGroup.posts.push(cur)
+  } else {
+    acc.push({
+      year,
+      posts: [cur],
+    })
+  }
+  return acc
+}, [])
+---
+
+<section>
+  {
+    groupedPosts.map((year) => (
+      <div class="time-line">
+        <h3
+          id={year.year}
+          class="time-year hollow-text"
+        >
+          {year.year}
+        </h3>
+        <ul class="article-list">
+          {year.posts.map((post) => (
+            <li>
+              <a
+                href={`/docs/${post.slug}`}
+              >
+                {post.data.title}
+              </a>
+              {post.data.sticky > 0 && <i class="iconfont icon-pushpin text-red-500" />}
+              <span>
+                {getShortDate(post.data.date)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</section>

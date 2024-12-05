@@ -1,0 +1,37 @@
+---
+//归档界面
+import Layout from '../layouts/Layout.astro';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header/Header.astro";
+import { Provider } from '@/components/provider/Provider'
+import Timeline from '@/components/Timeline.astro';
+
+import { getOldestPosts } from '../utils/content'
+const oldestPosts = await getOldestPosts()
+---
+
+<Layout title="归档">
+	<Provider  pathName={Astro.url.pathname} client:only="react"/>
+	<!-- <header><Navbar /></header> -->
+	<Header></Header>
+		<main class="layout">
+			<div class="archives">
+				<Timeline docs={oldestPosts}></Timeline>
+
+			</div>
+		</main>
+		<Footer />
+</Layout>
+
+<style>
+.layout {
+	display: flex;
+	/* justify-content: center; */
+	padding: 80px 30px;
+}
+.archives {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+</style>
